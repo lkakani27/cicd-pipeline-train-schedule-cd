@@ -21,13 +21,13 @@
 			"name": "Flying Scotsman",
 			"stops": [
 				{
-					"station": "Pine",
+					"station": "Vijayawada",
 					"status": "ON-TIME",
 					"arrival": "12:00pm",
 					"departure": "12:10pm"
 				},
 				{
-					"station": "Sycamore",
+					"station": "Tamilnadu",
 					"status": "DELAYED",
 					"arrival": "1:00pm",
 					"departure": "1:10pm",
