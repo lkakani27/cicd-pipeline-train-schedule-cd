@@ -36,11 +36,15 @@ pipeline {
                               ]
                           )
                   }
-                                 stage('DeployToStaging") {
+                                  }
+                                  }                      
+        stage('DeployToProduction') {
               when {
                   branch 'master'
               }
               steps {
+                  input 'Does the staging environment look OK ?'
+                  milestone(1)
                   withCredentials([usernamePassword CredentialsId : 'admin', usernameVariable :'USERNAME', passwordVariable : 'USERPASS')]{
                       sshPublisher(
                           failOnError : true,
@@ -59,6 +63,16 @@ pipeline {
                                               remoteDirectory : '/tmp',
                                               execCommand : 'sudo /usr/bin/systemctl stop train-schedule && rm -rf /opt/train-schedule/* && unzip /tmp/trainSchedule.zip -d /opt/train-schedule && sudo /usr/bin/systemctl start train-schedule'
                                               ) 
+                                          ]
+                                  )
+                              ]
+                          )
+                  }
+                                  }
+                                  }
+                                  }
+                                  }
+                                 
                                   
                                   
                                   
