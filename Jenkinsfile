@@ -19,7 +19,7 @@ pipeline {
                           continueOnError: false,
                           publishers: [
                               sshPublisherDesc(
-                                  ConfigName : 'staging',
+                                  configName: 'staging',
                                   sshCredentials: [
                                       username: "$USERNAME",
                                       encryptedPassphrase: "$USERPASS"
@@ -43,15 +43,15 @@ pipeline {
                   branch 'master'
               }
               steps {
-                  input 'Does the staging environment look OK ?'
+                  input 'Does the staging environment look OK?'
                   milestone(1)
-                  withCredentials([usernamePassword(credentialsId : 'webserver_login', usernameVariable: 'USERNAME', passwordVariabl: 'USERPASS')]){
+                  withCredentials([usernamePassword(credentialsId: 'webserver_login', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                       sshPublisher(
                           failOnError: true,
                           continueOnError: false,
                           publishers: [
                               sshPublisherDesc(
-                                  configName : 'production',
+                                  configName: 'production',
                                   sshCredentials: [
                                       username: "$USERNAME",
                                       encryptedPassphrase: "$USERPASS"
@@ -72,3 +72,15 @@ pipeline {
             }
         }
     }
+ }                         
+                                  
+                                  
+                                  
+                                  
+  
+                                  
+                                  
+                                  
+                               
+                                  
+                                                          
