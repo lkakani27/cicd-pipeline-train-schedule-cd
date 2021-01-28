@@ -35,9 +35,9 @@ pipeline {
                                   )
                               ]
                           )
-                  }
-                                  }
-                                  }                      
+                   }
+            }
+        }                      
         stage('DeployToProduction') {
               when {
                   branch 'master'
@@ -45,7 +45,7 @@ pipeline {
               steps {
                   input 'Does the staging environment look OK ?'
                   milestone(1)
-                  withCredentials([usernamePassword(credentialsId : 'admin', usernameVariable: 'USERNAME', passwordVariabl: 'USERPASS')]{
+                  withCredentials([usernamePassword(credentialsId : 'admin', usernameVariable: 'USERNAME', passwordVariabl: 'USERPASS')]){
                       sshPublisher(
                           failOnError: true,
                           continueOnError: false,
@@ -72,15 +72,3 @@ pipeline {
             }
         }
     }
-                                 
-                                  
-                                  
-                                  
-                                  
-  
-                                  
-                                  
-                                  
-                               
-                                  
-                                                          
